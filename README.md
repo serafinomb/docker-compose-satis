@@ -27,3 +27,20 @@ Ideally you would have an IAM user for the package manager and another for your 
 - Use Composer as usual.
 
 Mind that the repository download will still happen from CodeCommit. After updating your composer.json file make sure that your SSH public key is configured on AWS and that your .ssh/config file contains the CodeCommit repository host (as seen in the AWS CodeCommit IAM configuration guide). If everything is correctly configured, you'll be able to authenticate to CodeCommit.
+
+### Deploy on AWS
+You can find a `buildspec.yml` file and a .ssh directory that will help you deploy Satis on AWS.
+- buildspec.yml: this file will take care of building and updating your packages, the artifact should be deployed on a S3 bucket with support for Web Hosting (see https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
+- .ssh: this directory contains the SSH private key and config file which allow CodeBuild to fetch your private repositories.
+
+You'll need to:
+- Create a CodeCommit repository to host this code
+- Create a CodePipeline to build and deploy it
+- Create an S3 bucket and configure it to host a static website
+- Rename .ssh/config.dist into .ssh/config replacing `ssh-key-id` with the SSH Key ID obtained while configuring your IAM user
+- Replace .ssh/id_rsa with the RSA key generated while configuring your IAM user
+
+This should be enough to deploy your Satis instance.
+
+You can choose whether to run the CodePipeline periodically or everytime one of your packages (hosted on CodeCommit) get updated. You'll need to use CloudWatch Events for either solutions.
+
