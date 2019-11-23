@@ -1,7 +1,8 @@
 version: '3.7'
 
-# The nginx can be removed if the web interface is not needed. Remember to also
-# add `"output-html": false` to your satis.json configuration file.
+# The nginx service can be removed if the web interface is not needed. Remember
+# to also prevent Satis from generating the web output, see
+# https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md#web-outputs
 services:
     nginx:
         image: nginx
