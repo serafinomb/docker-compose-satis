@@ -10,7 +10,8 @@
 Step 1-8
 https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-ssh-unixes.html#setting-up-ssh-unixes-keys
 
-Ideally you would have an IAM user for the package manager and another for your projects.
+Ideally you would have an IAM user for the package manager and another for your
+projects.
 
 ### Usage in a project
 - Update your project's composer.json as follows:
@@ -26,7 +27,12 @@ Ideally you would have an IAM user for the package manager and another for your 
 ``` 
 - Use Composer as usual.
 
-Mind that the repository download will still happen from CodeCommit. After updating your composer.json file make sure that your SSH public key is configured on AWS and that your .ssh/config file contains the CodeCommit repository host (as seen in the AWS CodeCommit IAM configuration guide). If everything is correctly configured, you'll be able to authenticate to CodeCommit.
+Mind that the repository download will still happen from CodeCommit. After
+updating your composer.json file make sure that your SSH public key is
+configured on AWS and that your .ssh/config file contains the CodeCommit
+repository host (as seen in the AWS CodeCommit IAM configuration guide). If
+everything is correctly configured, you'll be able to authenticate to
+CodeCommit.
 
 ### Deploy on AWS
 You can find a `buildspec.yml` file that will help you deploy Satis on AWS.
@@ -42,5 +48,7 @@ You'll need to:
 
 This should be enough to deploy your Satis instance.
 
-You can choose whether to run the CodePipeline periodically or everytime one of your packages (hosted on CodeCommit) get updated. You'll need to use CloudWatch Events for either solutions.
+You can choose whether to run the CodePipeline periodically or everytime one of
+your packages (hosted on CodeCommit) get updated. You'll need to use CloudWatch
+Events for either solutions.
 
