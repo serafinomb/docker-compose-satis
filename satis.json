@@ -2,7 +2,7 @@
   "name": "My Repository",
   "homepage": "http://packages.example.org",
   "repositories": [
-    { "type": "vcs", "url": "ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/my-repo.git" }
+    { "type": "vcs", "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/my-repo" }
   ],
   "require-all": true
 }

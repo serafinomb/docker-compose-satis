@@ -1,13 +1,12 @@
 version: 0.2
 
+env:
+    git-credential-helper: yes
+
 phases:
   install:
     runtime-versions:
       php: 7.3
-  pre_build:
-    commands:
-      - cp -v .ssh/config .ssh/id_rsa ~/.ssh
-      - chmod 600 ~/.ssh/id_rsa
   build:
     commands:
       - composer install --prefer-dist --no-dev --optimize-autoloader --ignore-platform-reqs --no-suggest --no-ansi --no-interaction
